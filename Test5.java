@@ -1,24 +1,25 @@
-package day4;
-import java.util.Random;
+package day5;
+import java.util.Scanner;
 public class Test5 {
-    public static void main(String[] args){
-        Random r = new Random();
-        int[] a = new int[10];
-        int sum = 0;
-        for(int i = 0;i<a.length;i++){
-            a[i] = r.nextInt(100)+1;
-            System.out.print(a[i]+" ");
-            sum+=a[i];
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int[] a = {1,4,23,5656,3,3,23,43};
+        System.out.println("输入第一个索引：");
+        int from = sc.nextInt();
+        System.out.println("输入第二个索引：");
+        int to = sc.nextInt();
+
+        int[] b = fun(a,from,to);
+        for(int i = 0;i<b.length;i++){
+            System.out.print(b[i]+" ");
         }
-        System.out.println("和为"+sum);
-        int avg = sum/a.length;
-        System.out.println("平均数为"+avg);
-        int count = 0;
-        for(int i = 0;i<a.length;i++){
-            if(avg>a[i]){
-                count++;
-            }
+    }
+
+    public static int[] fun(int[] a,int from,int to){
+        int[] b = new int[to-from+1];
+        for(int i = from,j = 0;j<b.length;i++,j++){
+            b[j] = a[i];
         }
-        System.out.println("比平均数小的数有"+count+"个");
+        return b;
     }
 }
