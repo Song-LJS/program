@@ -1,32 +1,72 @@
-package day5;
+package day6;
+import java.util.Random;
 import java.util.Scanner;
 public class Test6 {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("机票原价是：");
-        double free = sc.nextDouble();
-        System.out.println("输入现在的月份：");
-        int month = sc.nextInt();
-        sc.nextLine();
-        System.out.println("输入做的舱级：");
-        String grade = sc.nextLine();
-        System.out.println("打折后的费用是"+fun(free,month,grade));
+        int[] a = fun();
+        int[] b = userNumber();
+        for(int i = 0;i<a.length;i++){
+            System.out.print(a[i]+" ");
+        }
+        System.out.println(" ");
+        for(int i = 0;i<a.length;i++){
+            System.out.print(b[i]+" ");
+        }
+
     }
 
-    public static double fun(double free,int month,String grade){
-        System.out.println(grade);
-        if(month>=5&&month<=10){
-            if("头等舱".equals(grade)){
-                return free*0.9;
+    //
+
+    public static int[] userNumber(){
+        int[] a = new int[7];
+        Scanner sc = new Scanner(System.in);
+        for(int i = 0;i<a.length-1;){
+            System.out.println("请输入第"+(i+1)+"个号码球");
+            int n = sc.nextInt();
+            if(n>=1&&n<=33&&flag(a,n)){
+                a[i] = n;
+                i++;
             }else{
-                return free*0.85;
-            }
-        }else{
-            if("头等舱".equals(grade)){
-                return free*0.7;
-            }else{
-                return free*0.65;
+                System.out.println("请重新输入:");
             }
         }
+        int count = 0;
+        while(count==0){
+        System.out.println("请输入第7个号码球");
+        int b = sc.nextInt();
+        if(b>=1&&b<=16){
+            a[a.length-1] = b;
+            count++;
+        }else{
+            System.out.println("请重新输入");
+        }
+    }
+        return a;
+    }
+
+    //生成红蓝色球
+    public static int[] fun(){
+        int[] a = new int[7];
+        Random r = new Random();
+        for(int i = 0;i<a.length-1;){
+            int number = r.nextInt(33)+1;
+            if(flag(a,number)){
+                a[i] = number;
+                i++;
+            }
+        }
+
+        a[6] = r.nextInt(16)+1;
+
+        return a;
+    }
+
+    //判断红球是否重复
+    public static boolean flag(int[] a,int n){
+        for(int i = 0;i<a.length;i++){
+            if(a[i]==n)
+                return false;
+        }
+        return true;
     }
 }

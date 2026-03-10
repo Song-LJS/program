@@ -1,21 +1,15 @@
-package day5;
-
+package day6;
+import java.util.Random;
 public class Test4 {
     public static void main(String[] args) {
-        int[] a = {21,43,6,34};
-        if(find(a,6)){
-            System.out.println("该数字存在");
-        }else{
-            System.out.println("该数字不存在");
-        }
-    }
-
-    public static boolean find(int[] a,int n){
-        for(int i =0;i<a.length;i++){
-            if(a[i]==n){
-                return true;
+        int[] a = {2,588,888,1000,10000};
+        Random r = new Random();
+        for(int i = 5;i>=0;i--){
+            int n = r.nextInt(i);
+            System.out.println(a[n]+"元的奖金被抽出");
+            for(int j = n;j<i-1;j++){
+                a[j] = a[j+1];
             }
         }
-        return false;
     }
 }

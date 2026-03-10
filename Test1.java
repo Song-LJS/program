@@ -1,29 +1,17 @@
-package day5;
-
+package day6;
+import java.util.Scanner;
 public class Test1 {
-    public static void main(String[] args){
-        long n1 = 23423;
-        long n2 = 5354342;
-        compare(n1,n2);
-    }
-
-    public static void compare(short n1,short n2){
-        System.out.println("short");
-        System.out.println(n1==n2);
-    }
-
-    public static void compare(byte n1,byte n2){
-        System.out.println("byte");
-        System.out.println(n1==n2);
-    }
-
-    public static void compare(long n1,long n2){
-        System.out.println("long");
-        System.out.println(n1==n2);
-    }
-
-    public static void compare(int n1,int n2){
-        System.out.println("int");
-        System.out.println(n1==n2);
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        //System.out.println("请输入原密码：");
+        int a = 1985;
+        int[] b = new int[4];
+        for(int i = 0;i<b.length;i++){
+            b[i] = (a%10+5)%10;
+            a/=10;
+        }
+        for(int i = 0;i<b.length;i++){
+            System.out.print(b[i]);
+        }
     }
 }
