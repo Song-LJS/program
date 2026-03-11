@@ -1,17 +1,19 @@
-package day6;
-import java.util.Scanner;
+package day7;
+
 public class Test1 {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        //System.out.println("请输入原密码：");
-        int a = 1985;
-        int[] b = new int[4];
-        for(int i = 0;i<b.length;i++){
-            b[i] = (a%10+5)%10;
-            a/=10;
+        int[][] a = {{22,66,44},{77,33,88},{25,45,65},{11,66,99}};
+        int[] free = new int[4];
+        int freeCount = 0;
+        for(int i = 0;i<a.length;i++){
+            for(int j = 0;j<a[i].length;j++){
+                freeCount += a[i][j];
+                free[i] += a[i][j];
+            }
         }
-        for(int i = 0;i<b.length;i++){
-            System.out.print(b[i]);
+        System.out.println(freeCount);
+        for(int i = 0;i<free.length;i++){
+            System.out.print(free[i]+" ");
         }
     }
 }
