@@ -1,14 +1,42 @@
-package day7;
+package day8;
 
 public class Phone {
-    String brand;
-    double price;
+    private String brand;
+    private double price;
+    private String color;
 
-    public void call(){
-        System.out.println("手机在打电话");
+    public Phone() {
     }
 
-    public void playGame(){
-        System.out.println("手机在玩游戏");
+    public Phone(String brand, String color, double price) {
+        this.brand = brand;
+        this.color = color;
+        this.price = price;
     }
+
+    public String getBrand() {
+        return brand;
+    }
+
+    public void setBrand(String brand) {
+        this.brand = brand;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+
 }
