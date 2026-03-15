@@ -1,20 +1,24 @@
-package day9;
-import java.util.Scanner;
+package day10;
+
 public class StringDemo2 {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("请输入字符串：");
-        String str = sc.next();
-
-        change(str);
+        int[] a = {1,2,3};
+        change(a);
     }
 
-    public static void change(String str){
-        String str2 = new String();
-        for(int i = str.length()-1;i>=0;i--){
-            char c = str.charAt(i);
-            str2 += c;
+    public static void change(int[] a){
+        StringBuilder sb = new StringBuilder("[");
+        if(a.length == 0){
+            sb.append("]");
         }
-        System.out.println(str2);
+        for(int i = 0;i<a.length;i++){
+            if(i!=a.length-1){
+                sb.append(a[i]).append(',');
+            }else{
+                sb.append(a[i]).append("]");
+            }
+        }
+        String str = sb.toString();
+        System.out.println(str);
     }
 }
