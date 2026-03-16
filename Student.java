@@ -1,17 +1,19 @@
-package day9;
+package day11;
 
 public class Student {
     private String name;
     private int age;
     private String id;
-
+    private String address;
+    
     public Student() {
     }
 
-    public Student(int age, String id, String name) {
+    public Student(String name, int age, String id, String address) {
+        this.name = name;
         this.age = age;
         this.id = id;
-        this.name = name;
+        this.address = address;
     }
 
     public String getName() {
@@ -38,5 +40,13 @@ public class Student {
         this.id = id;
     }
 
+    public String getAddress() {
+        return address;
+    }
 
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    
 }

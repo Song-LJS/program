@@ -1,59 +1,42 @@
-package day8;
+package day11;
 
-public class User{
-    private String username;
-    private String password;
-    private String email;
-    private String gender;
-    private int age;
+public class User {
+    private int id;
+    private String name;
+    private int password;
 
-    public User(){}
-
-    public User(String username,String password,String email,String gender,int age){
-        this.username = username;
-        this.password = password;
-        this.email = email;
-        this.gender = gender;
-        this.age = age;
+    public User() {
     }
 
-    public void setusername(String username){
-        this.username = username;
-    }
-
-    public String getusername(){
-        return username;
-    }
-
-    public void setpassword(String password){
+    public User(int id, String name, int password) {
+        this.id = id;
+        this.name = name;
         this.password = password;
     }
 
-    public String getpassword(){
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getPassword() {
         return password;
     }
 
-    public void setemail(String email){
-        this.email = email;
+    public void setPassword(int password) {
+        this.password = password;
     }
 
-    public String getemail(){
-        return email;
-    }
 
-    public void setgender(String gender){
-        this.gender = gender;
-    }
-
-    public String getgender(){
-        return gender;
-    }
-
-    public void setage(int age){
-        this.age = age;
-    }
-
-    public int getage(){
-        return age;
-    }
 }

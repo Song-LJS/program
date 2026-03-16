@@ -1,16 +1,14 @@
-package day8;
+package day11;
 
 public class Phone {
     private String brand;
-    private double price;
-    private String color;
+    private int price;
 
     public Phone() {
     }
 
-    public Phone(String brand, String color, double price) {
+    public Phone(String brand, int price) {
         this.brand = brand;
-        this.color = color;
         this.price = price;
     }
 
@@ -22,20 +20,12 @@ public class Phone {
         this.brand = brand;
     }
 
-    public double getPrice() {
+    public int getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(int price) {
         this.price = price;
-    }
-
-    public String getColor() {
-        return color;
-    }
-
-    public void setColor(String color) {
-        this.color = color;
     }
 
 
