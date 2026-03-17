@@ -1,25 +1,19 @@
-package day11;
+package day12;
 
 public class User {
-    private int id;
     private String name;
-    private int password;
+    private String password;
+    private String sfnumber;
+    private String number;
 
     public User() {
     }
 
-    public User(int id, String name, int password) {
-        this.id = id;
+    public User(String name, String number, String password, String sfnumber) {
         this.name = name;
+        this.number = number;
         this.password = password;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
+        this.sfnumber = sfnumber;
     }
 
     public String getName() {
@@ -30,12 +24,28 @@ public class User {
         this.name = name;
     }
 
-    public int getPassword() {
+    public String getPassword() {
         return password;
     }
 
-    public void setPassword(int password) {
+    public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getSfnumber() {
+        return sfnumber;
+    }
+
+    public void setSfnumber(String sfnumber) {
+        this.sfnumber = sfnumber;
+    }
+
+    public String getNumber() {
+        return number;
+    }
+
+    public void setNumber(String number) {
+        this.number = number;
     }
 
 
