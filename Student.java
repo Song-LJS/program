@@ -1,19 +1,17 @@
-package day11;
+package day13;
 
 public class Student {
     private String name;
     private int age;
-    private String id;
-    private String address;
-    
+    private String gender;
+
     public Student() {
     }
 
-    public Student(String name, int age, String id, String address) {
-        this.name = name;
+    public Student(int age, String gender, String name) {
         this.age = age;
-        this.id = id;
-        this.address = address;
+        this.gender = gender;
+        this.name = name;
     }
 
     public String getName() {
@@ -32,21 +30,13 @@ public class Student {
         this.age = age;
     }
 
-    public String getId() {
-        return id;
+    public String getGender() {
+        return gender;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setGender(String gender) {
+        this.gender = gender;
     }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
+    
     
 }
