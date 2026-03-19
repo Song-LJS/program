@@ -1,12 +1,15 @@
-package day13;
+package day14;
 
 public class Test {
     public static void main(String[] args) {
-        LiHua cat1 = new LiHua();
-        cat1.eat();
-        cat1.drink();
+        Huskly d1 = new Huskly();
+        d1.eat();
+        d1.breakhome();
 
-        Teddy dog1 = new Teddy();
-        dog1.drink();
+        Sapi d2 = new Sapi();
+        d2.eat();
+
+        China d3 = new China();
+        d3.eat();
     }
 }

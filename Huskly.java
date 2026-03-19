@@ -1,7 +1,7 @@
-package day13;
+package day14;
 
-public class Huskly extends dog{
+public class Huskly extends Dog{
     public void breakhome(){
-        System.out.println("拆家");
+        System.out.println("哈士奇拆家");
     }
 }
