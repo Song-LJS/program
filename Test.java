@@ -1,15 +1,11 @@
-package day14;
+package day17;
 
 public class Test {
     public static void main(String[] args) {
-        Huskly d1 = new Huskly();
-        d1.eat();
-        d1.breakhome();
-
-        Sapi d2 = new Sapi();
-        d2.eat();
-
-        China d3 = new China();
-        d3.eat();
+        Dog a = new Dog(1,"黑");
+        Person p = new Person(23,"宋丽娟");
+        p.keepPet(a, "骨头");
+        Cat b = new Cat(2, "白");
+        p.keepPet(b, "小鱼干");
     }
 }
