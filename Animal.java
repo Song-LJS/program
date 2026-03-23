@@ -1,12 +1,23 @@
-package day17;
+package day18;
 
-public class Animal {
+public abstract class Animal {
+    private String name;
     private int age;
-    private String color;
 
-    public Animal(int age, String color) {
+    public Animal() {
+    }
+
+    public Animal(int age, String name) {
         this.age = age;
-        this.color = color;
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public int getAge() {
@@ -16,16 +27,10 @@ public class Animal {
     public void setAge(int age) {
         this.age = age;
     }
-
-    public String getColor() {
-        return color;
+    
+    public void drink(){
+        System.out.println("动物在喝水");
     }
 
-    public void setColor(String color) {
-        this.color = color;
-    }
-
-    public void eat(String something){
-        System.out.println("动物在吃"+something);
-    }
+    public abstract void eat();
 }

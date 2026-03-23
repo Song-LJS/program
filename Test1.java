@@ -1,17 +1,12 @@
-package day16;
+package day18;
 
 public class Test1 {
     public static void main(String[] args) {
-        Maintainer m = new Maintainer("12","song");
-        m.work();
-        String id = m.getId();
-        System.out.println(id);
+        frog f = new frog(1,"song");
+        f.eat();
 
-        Buyer b = new Buyer();
-        b.work();
-
-        Tutor t = new Tutor();
-        t.work();
+        Dog d = new Dog(2,"li");
+        d.eat();
+        d.drink();
     }
-    
 }
