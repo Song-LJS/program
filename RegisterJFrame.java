@@ -1,4 +1,4 @@
-package day19;
+package day19and20;
 
 import javax.swing.JFrame;
 

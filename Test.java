@@ -1,21 +1,31 @@
-package day19;
+package day19and20;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.*;
 
 public class Test {
     public static void main(String[] args) {
-        //建立一个游戏的主界面
-        JFrame gameJframe = new JFrame();
-    gameJframe.setSize(603,680);
-    gameJframe.setVisible(true);
+        JFrame jFrame = new JFrame();
+        jFrame.setSize(603,680);
+        jFrame.setTitle("事件演示");
+        jFrame.setAlwaysOnTop(true);
+        jFrame.setLocationRelativeTo(null);
+        jFrame.setDefaultCloseOperation(3);
+        jFrame.setLayout(null);
 
-    JFrame loginJfram = new JFrame();
-    loginJfram.setSize(488,430);
-    loginJfram.setVisible(true);
+        JButton jtb = new JButton("点我");
+        jtb.setBounds(0, 0, 100, 50);
 
-    JFrame registerJfram = new JFrame();
-    registerJfram.setSize(488,500);
-    registerJfram.setVisible(true);
+        jtb.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e){
+                System.out.println("点我干啥");
+            }
+        });
+
+        jFrame.getContentPane().add(jtb);
+
+        jFrame.setVisible(true);
     }
-
 }
