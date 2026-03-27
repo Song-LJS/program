@@ -1,9 +1,12 @@
 package day19and20;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.Random;
 import javax.swing.ImageIcon;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
@@ -11,11 +14,16 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.border.BevelBorder;
 
-public class GameJFrame extends JFrame implements KeyListener{
+public class GameJFrame extends JFrame implements KeyListener,ActionListener{
     int[][] data = new int[4][4];
     int x = 0;
     int y = 0;
     String path = "D:\\Code\\Java学习\\day19and20\\photo\\拼图图片\\";
+    int setp = 0;
+    JMenuItem replayItem = new JMenuItem("重新游戏");
+    JMenuItem reLoginItem = new JMenuItem("重新登陆");
+    JMenuItem closeItem = new JMenuItem("关闭游戏");
+    JMenuItem accountItem = new JMenuItem("公众号");
     
     public GameJFrame(){
         initJFrame();
@@ -51,6 +59,16 @@ public class GameJFrame extends JFrame implements KeyListener{
     public void initImage(){
         this.getContentPane().removeAll();
 
+        if(Victory(data)){
+            JLabel victory = new JLabel(new ImageIcon("D:\\Code\\Java学习\\day19and20\\photo\\victory.jpg"));
+            victory.setBounds(230, 230, 150, 150);
+            this.getContentPane().add(victory);
+        }
+
+        JLabel setpCount = new JLabel("步数："+setp);
+        setpCount.setBounds(30, 10, 100, 20);
+        this.getContentPane().add(setpCount);
+
         for(int i = 0;i<=3;i++){
             for(int j = 0;j<=3;j++){
                 int number = data[i][j];
@@ -84,12 +102,6 @@ public class GameJFrame extends JFrame implements KeyListener{
         JMenu functionJMenu = new JMenu("功能");
         JMenu aboutJMenu = new JMenu("关于我们");
 
-        JMenuItem replayItem = new JMenuItem("重新游戏");
-        JMenuItem reLoginItem = new JMenuItem("重新登陆");
-        JMenuItem closeItem = new JMenuItem("关闭游戏");
-
-        JMenuItem accountItem = new JMenuItem("公众号");
-
         functionJMenu.add(replayItem);
         functionJMenu.add(reLoginItem);
         functionJMenu.add(closeItem);
@@ -98,6 +110,11 @@ public class GameJFrame extends JFrame implements KeyListener{
 
         jMenuBar.add(functionJMenu);
         jMenuBar.add(aboutJMenu);
+
+        replayItem.addActionListener(this);
+        reLoginItem.addActionListener(this);
+        closeItem.addActionListener(this);
+        accountItem.addActionListener(this);
 
         this.setJMenuBar(jMenuBar);
     }
@@ -126,6 +143,9 @@ public class GameJFrame extends JFrame implements KeyListener{
 
     @Override
     public void keyReleased(KeyEvent e) {
+        if(Victory(data)){
+            return;
+        }
         int code = e.getKeyCode();
         if(code == 37){
             if(y == 3){
@@ -134,6 +154,7 @@ public class GameJFrame extends JFrame implements KeyListener{
             data[x][y] = data[x][y+1];
             data[x][y+1] = 0;
             y++;
+            setp++;
             System.out.println("向左移动");
             initImage();
         }else if(code == 38){
@@ -143,6 +164,7 @@ public class GameJFrame extends JFrame implements KeyListener{
             data[x][y] = data[x+1][y];
             data[x+1][y] = 0;
             x++;
+            setp++;
             System.out.println("向上移动");
             initImage();
         }else if(code == 39){
@@ -152,6 +174,7 @@ public class GameJFrame extends JFrame implements KeyListener{
             data[x][y] = data[x][y-1];
             data[x][y-1] = 0;
             y--;
+            setp++;
             System.out.println("向右移动");
             initImage();
         }else if(code == 40){
@@ -161,10 +184,66 @@ public class GameJFrame extends JFrame implements KeyListener{
             data[x][y] = data[x-1][y];
             data[x-1][y] = 0;
             x--;
+            setp++;
             System.out.println("向下移动");
             initImage();
         }else if(code == 65){
             initImage();
+        }else if((code == 87)){
+            data = new int[][]{
+                {1,2,3,4},
+                {5,6,7,8},
+                {9,10,11,12},
+                {13,14,15,0}
+            };
+            initImage();
+        }
+    }
+
+    public static boolean Victory(int[][] data){
+        int[][] text = new int[4][4];
+        text = new int[][]{
+                {1,2,3,4},
+                {5,6,7,8},
+                {9,10,11,12},
+                {13,14,15,0}
+            };
+        for(int i = 0;i<4;i++){
+            for(int j = 0;j<4;j++){
+                if(data[i][j] != text[i][j]){
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        Object obj = e.getSource();
+        if(obj == replayItem){
+            System.out.println("重新开始");
+            setp = 0;
+            initData();
+            initImage();
+        }else if(obj == reLoginItem){
+            System.out.println("重新登陆");
+            this.setVisible(false);
+            new LoginJFrame();
+        }else if(obj == closeItem){
+            System.out.println("退出游戏");
+            System.exit(0);
+        }else if(obj == accountItem){
+            System.out.println("公众号");
+            JDialog about = new JDialog();
+            JLabel a = new JLabel(new ImageIcon("D:\\Code\\Java学习\\day19and20\\photo\\about.jpg"));
+            a.setBounds(0,0, 200, 200);
+            about.getContentPane().add(a);
+            about.setSize(300, 300);
+            about.setAlwaysOnTop(true);
+            about.setLocationRelativeTo(null);
+            about.setModal(true);
+            about.setVisible(true);
         }
     }
 }
