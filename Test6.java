@@ -1,72 +1,87 @@
-package day6;
-import java.util.Random;
-import java.util.Scanner;
+package day25;
+
 public class Test6 {
     public static void main(String[] args) {
-        int[] a = fun();
-        int[] b = userNumber();
-        for(int i = 0;i<a.length;i++){
-            System.out.print(a[i]+" ");
-        }
-        System.out.println(" ");
-        for(int i = 0;i<a.length;i++){
-            System.out.print(b[i]+" ");
-        }
+        int[] a = {16,5,9,12,21,18,
+                   32,23,37,26,45,34,
+                   50,48,61,52,73,66};
+        Block b1 = new Block(0,5,21);
+        Block b2 = new Block(6,11,45);
+        Block b3 = new Block(12,17,73);
 
-    }
+        Block[] B = {b1,b2,b3};
 
-    //
+        int n = 1;
 
-    public static int[] userNumber(){
-        int[] a = new int[7];
-        Scanner sc = new Scanner(System.in);
-        for(int i = 0;i<a.length-1;){
-            System.out.println("请输入第"+(i+1)+"个号码球");
-            int n = sc.nextInt();
-            if(n>=1&&n<=33&&flag(a,n)){
-                a[i] = n;
-                i++;
-            }else{
-                System.out.println("请重新输入:");
-            }
-        }
-        int count = 0;
-        while(count==0){
-        System.out.println("请输入第7个号码球");
-        int b = sc.nextInt();
-        if(b>=1&&b<=16){
-            a[a.length-1] = b;
-            count++;
+        int Index = fun(a,B,n);
+        if(Index>=0){
+            System.out.println("该数字索引为"+Index);
         }else{
-            System.out.println("请重新输入");
+            System.out.println("该数字不存在");
         }
     }
-        return a;
-    }
 
-    //生成红蓝色球
-    public static int[] fun(){
-        int[] a = new int[7];
-        Random r = new Random();
-        for(int i = 0;i<a.length-1;){
-            int number = r.nextInt(33)+1;
-            if(flag(a,number)){
-                a[i] = number;
-                i++;
+    public static int fun(int[] a,Block[] B,int n){
+        if(findIndex(B, n) == -1){
+            return -1;
+        }
+        int Index = findIndex(B,n);
+        for(int i = B[Index].getMinIndex();i<=B[Index].getMaxIndex();i++){
+            if(a[i] == n){
+                return i;
             }
         }
-
-        a[6] = r.nextInt(16)+1;
-
-        return a;
+        return -1;
     }
 
-    //判断红球是否重复
-    public static boolean flag(int[] a,int n){
-        for(int i = 0;i<a.length;i++){
-            if(a[i]==n)
-                return false;
+    public static int findIndex(Block[] B,int n){
+        for(int i = 0;i<B.length;i++){
+            if(n<=B[i].getMax()){
+                return i;
+            }
         }
-        return true;
+        return -1;
     }
+
+static class Block{
+    private int minIndex;
+    private int maxIndex;
+    private int Max;
+    
+    public Block() {
+    }
+
+    public Block(int minIndex, int maxIndex, int max) {
+        this.minIndex = minIndex;
+        this.maxIndex = maxIndex;
+        Max = max;
+    }
+
+    public int getMinIndex() {
+        return minIndex;
+    }
+
+    public void setMinIndex(int minIndex) {
+        this.minIndex = minIndex;
+    }
+
+    public int getMaxIndex() {
+        return maxIndex;
+    }
+
+    public void setMaxIndex(int maxIndex) {
+        this.maxIndex = maxIndex;
+    }
+
+    public int getMax() {
+        return Max;
+    }
+
+    public void setMax(int max) {
+        Max = max;
+    }
+
+    
+    
+}
 }
