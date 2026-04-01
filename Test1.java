@@ -1,48 +1,49 @@
-package day24;
-
-import java.util.ArrayList;
-import java.util.Scanner;
+package day26;
 
 public class Test1 {
     public static void main(String[] args) {
-        ArrayList<Integer> list = new ArrayList<>();
-        Scanner sc = new Scanner(System.in);
-        while (true) { 
-            System.out.println("输入一个整数：");
-            String str = sc.nextLine();
-            if(!fun(str)){
-                System.out.println("数字范围不再1~100，请重新输入：");
-                continue;
-            }else{
-                list.add(Integer.valueOf(str));
-            }
-
-            if(!result(list)){
-                break;
-            }
-        }
-
-        for(int i = 0;i<list.size();i++){
-            System.out.println(list.get(i));
+        int[] a = {6,1,2,7,9,3,4,5,10,8};
+        fun(a,0,a.length-1);
+        for(int i = 0;i<a.length;i++){
+            System.out.print(a[i]+" ");
         }
     }
 
-    public static boolean fun(String str){
-        int num = Integer.parseInt(str);
-        if(num>=1 && num<=100){
-            return true;
-        }
-        return false;
-    } 
+    public static void fun(int[] a,int i,int j){
+        int start  = i;
+        int end = j;
 
-    public static boolean result(ArrayList<Integer> list){
-        int sum = 0;
-        for(int i = 0;i<list.size();i++){
-            sum+=list.get(i);
+        if(start > end){
+            return;
         }
-        if(sum>200){
-            return false;
+
+        int baseNumber = a[i];
+
+        while(start != end){
+            while (true) {
+                if(start >= end || a[end]<baseNumber){
+                    break;
+                }   
+                end--;
+            }
+
+             while (true) { 
+                if(start >= end||a[start]>baseNumber){
+                    break;
+                } 
+                start++;
+            }
+
+            int t = a[start];
+            a[start] = a[end];
+            a[end] = t;
         }
-        return true;
+
+        int n = a[i];
+        a[i] = a[start];
+        a[start] = n;
+
+        fun(a,i,start-1);
+        fun(a,start+1,j);
     }
 }

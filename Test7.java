@@ -1,21 +1,24 @@
-package day25;
+package day26;
 
 public class Test7 {
     public static void main(String[] args) {
-        int[] a = {2,4,5,3,1};
+        int t = fun(20);
+        System.out.println(t);
+    }
 
-        for(int j = 0;j<a.length-1;j++){
-            for(int i = 0;i<a.length-1-j;i++){
-                if(a[i]>a[i+1]){
-                    int t = a[i];
-                    a[i] = a[i+1];
-                    a[i+1] = t;
-                }
-            }
+    public static int fun(int n){
+        if(n == 1){
+            return 1;
         }
 
-        for(int i = 0;i<a.length;i++){
-            System.out.print(a[i]+" ");
+        if(n == 2){
+            return 2;
         }
+
+        if(n == 3){
+            return 4;
+        }
+
+        return fun(n-1)+fun(n-2)+fun(n-3);
     }
 }
