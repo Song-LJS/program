@@ -1,16 +1,21 @@
-package day26;
+package day27;
 
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.function.Consumer;
 
 public class Test3 {
     public static void main(String[] args) {
-        String[] str = {"song","li","juan","woaini","liujiashuo"};
+        Collection<String> coll = new ArrayList<>();
+        coll.add("song");
+        coll.add("li");
+        coll.add("juan");
 
-        Arrays.sort(str,(o1,o2) ->
-                o1.length() - o2.length()
-        );
-
-        System.out.println(Arrays.toString(str));
+        coll.forEach(new Consumer<String>() {
+            @Override
+            public void accept(String s) {
+                System.out.println(s);
+            }
+        });
     }
-
 }

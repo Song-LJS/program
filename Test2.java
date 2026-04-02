@@ -1,22 +1,21 @@
-package day26;
+package day27;
 
-import day18.inter.swim;
+import java.util.Iterator;
+import java.util.ArrayList;
+import java.util.Collection;
 
 public class Test2 {
     public static void main(String[] args) {
-        method(new Swim() {
-            @Override
-            public void swimming(){
-                System.out.println("正在游泳");
-            }
-        });
-    }
+        Collection<String> list = new ArrayList<>();
+        list.add("song");
+        list.add("li");
+        list.add("juan");
 
-        public static void method(Swim s){
-            s.swimming();
+        System.out.println(list);
+        Iterator<String> it = list.iterator();
+        while(it.hasNext()){
+            String str = it.next();
+            System.out.println(str);
         }
     }
-
-    interface Swim{
-        public abstract void swimming();
-    }
+}
