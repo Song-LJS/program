@@ -1,25 +1,14 @@
-package day27;
-
-import java.util.ArrayList;
-import java.util.Collection;
+package day39;
 
 public class Test1 {
     public static void main(String[] args) {
-        Collection<String> coll = new ArrayList<>();
+        int[] arr = {1,2,3,4,5};
+        try {
+            System.out.println(arr[10]);
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("索引越界");
+        }
 
-        coll.add("song");
-        coll.add("li");
-        coll.add("juan");
-        System.out.println(coll);
-
-        //coll.clear();
-        //System.out.println(coll);
-
-        System.out.println(coll.remove("song"));
-        System.out.println(coll);
-
-        boolean result = coll.contains("li");
-        System.out.println(result);
-
+        System.out.println("haha");
     }
 }
